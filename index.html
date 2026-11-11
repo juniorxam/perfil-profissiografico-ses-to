@@ -151,37 +151,37 @@ const blocks=[
 {n:3,q:"Você já trabalhou em urgência/emergência?",type:"radio",o:yesno},
 {n:4,q:"Você já trabalhou em atenção primária/ESF?",type:"radio",o:yesno},
 {n:5,q:"Em uma escala de 1 a 5, o quanto você se sente preparado tecnicamente para iniciar nesta função?",type:"scale",labels:["1","2","3","4","5"],hint:"1 = pouco preparado · 5 = muito preparado"},
-{n:29,q:"Você possui experiência profissional em atividades de gestão (coordenação de equipes, gestão de serviços, processos, contratos ou unidades de saúde)?",type:"radio",o:["Sim","Não"]}
+{n:6,q:"Você possui experiência profissional em atividades de gestão (coordenação de equipes, gestão de serviços, processos, contratos ou unidades de saúde)?",type:"radio",o:["Sim","Não"]}
 ]},
 {title:"Vínculo Territorial",desc:"Relação prévia com o Tocantins, o interior e o município de lotação.",items:[
-{n:6,q:"Você nasceu ou já morou no Tocantins?",type:"radio",o:yesno},
-{n:7,q:"Você já morou ou trabalhou em município de pequeno porte do interior?",type:"radio",o:yesno},
-{n:8,q:"Você tem familiares ou pessoas próximas morando no município de lotação ou região?",type:"radio",o:["Sim","Não","Não sei dizer"]},
-{n:9,q:"Como você avalia seu conhecimento sobre o município para onde vai?",type:"radio",o:["Nenhum","Pouco","Médio","Bom","Já conheço bem"]}
+{n:7,q:"Você nasceu ou já morou no Tocantins?",type:"radio",o:yesno},
+{n:8,q:"Você já morou ou trabalhou em município de pequeno porte do interior?",type:"radio",o:yesno},
+{n:9,q:"Você tem familiares ou pessoas próximas morando no município de lotação ou região?",type:"radio",o:["Sim","Não","Não sei dizer"]},
+{n:10,q:"Como você avalia seu conhecimento sobre o município para onde vai?",type:"radio",o:["Nenhum","Pouco","Médio","Bom","Já conheço bem"]}
 ]},
 {title:"Mobilidade e Disponibilidade",desc:"Condições práticas que podem influenciar a mudança e o deslocamento.",items:[
-{n:10,q:"Você possui dependentes que vão se mudar com você?",type:"radio",o:["Sim","Não","Mudança parcial — ex.: só o cônjuge"]},
-{n:11,q:"Você pretende se mudar definitivamente para o município, ou pretende fazer deslocamento periódico (ex.: semanal)?",type:"radio",o:["Mudança definitiva","Deslocamento periódico","Ainda não decidi"]},
-{n:12,q:"Você tem alguma restrição de deslocamento que a SES-TO deveria conhecer?",type:"textarea",optional:true}
+{n:11,q:"Você possui dependentes que vão se mudar com você?",type:"radio",o:["Sim","Não","Mudança parcial — ex.: só o cônjuge"]},
+{n:12,q:"Você pretende se mudar definitivamente para o município, ou pretende fazer deslocamento periódico (ex.: semanal)?",type:"radio",o:["Mudança definitiva","Deslocamento periódico","Ainda não decidi"]},
+{n:13,q:"Você tem alguma restrição de deslocamento que a SES-TO deveria conhecer?",type:"textarea",optional:true}
 ]},
 {title:"Perfil Comportamental e Adaptação",desc:"Indique o quanto você concorda com cada afirmação. Não existem respostas certas ou erradas.",items:[
-{n:13,q:"Eu me adapto bem a ambientes com poucos recursos disponíveis.",type:"scale"},
-{n:14,q:"Eu prefiro ter autonomia para resolver problemas sozinho a seguir protocolos rígidos de equipe.",type:"scale"},
-{n:15,q:"Eu me sinto confortável trabalhando em equipes pequenas, onde preciso assumir várias funções.",type:"scale"},
-{n:16,q:"Mudanças bruscas de rotina me geram desconforto significativo.",type:"scale"}
+{n:14,q:"Eu me adapto bem a ambientes com poucos recursos disponíveis.",type:"scale"},
+{n:15,q:"Eu prefiro ter autonomia para resolver problemas sozinho a seguir protocolos rígidos de equipe.",type:"scale"},
+{n:16,q:"Eu me sinto confortável trabalhando em equipes pequenas, onde preciso assumir várias funções.",type:"scale"},
+{n:17,q:"Mudanças bruscas de rotina me geram desconforto significativo.",type:"scale"}
 ]},
 {title:"Motivadores e Expectativas de Carreira",desc:"O que motivou sua escolha e quais são suas expectativas de permanência.",items:[
-{n:17,q:"O que mais pesou na sua escolha deste cargo/concurso?",type:"radioOther",o:["Estabilidade","Remuneração","Vocação para a área","Proximidade com família","Outro"]},
-{n:18,q:"Por quanto tempo você pretende permanecer neste município?",type:"radio",o:["Menos de 1 ano","1 a 2 anos","3 a 5 anos","Pretendo ficar definitivamente","Ainda não sei"]},
-{n:19,q:"O que faria você considerar pedir remoção ou exonerar-se nos primeiros meses?",type:"textarea",optional:true}
+{n:18,q:"O que mais pesou na sua escolha deste cargo/concurso?",type:"radioOther",o:["Estabilidade","Remuneração","Vocação para a área","Proximidade com família","Outro"]},
+{n:19,q:"Por quanto tempo você pretende permanecer neste município?",type:"radio",o:["Menos de 1 ano","1 a 2 anos","3 a 5 anos","Pretendo ficar definitivamente","Ainda não sei"]},
+{n:20,q:"O que faria você considerar pedir remoção ou exonerar-se nos primeiros meses?",type:"textarea",optional:true}
 ]},
 {title:"Afinidade funcional e estilo de Trabalho",desc:"Preferências de rotina e interação que podem subsidiar uma conversa sobre afinidade funcional.",items:[
-{n:20,q:"Eu me mantenho calmo(a) e funcional mesmo em situações de urgência ou alta pressão.",type:"scale",hint:"Relacionado a contextos como pronto-socorro e UTI"},
-{n:21,q:"Gosto de interagir com muitas pessoas diferentes ao longo do dia.",type:"scale",hint:"Relacionado a recepção e atendimento"},
-{n:22,q:"Lido bem com interrupções e múltiplas demandas simultâneas.",type:"scale",hint:"Relacionado a pronto-socorro e recepção de alto fluxo"},
-{n:23,q:"Prefiro ambientes de trabalho previsíveis e rotineiros a ambientes que mudam constantemente.",type:"scale",hint:"Relacionado a atividades administrativas"},
-{n:24,q:"Prefiro acompanhar poucos casos em profundidade a atender um grande volume de pessoas rapidamente.",type:"scale",hint:"Relacionado a internação e ambulatório"},
-{n:25,q:"Erros em protocolos ou rotinas me incomodam bastante, mesmo que pequenos.",type:"scale",hint:"Relacionado a setores com rotinas rígidas"}
+{n:21,q:"Eu me mantenho calmo(a) e funcional mesmo em situações de urgência ou alta pressão.",type:"scale",hint:"Relacionado a contextos como pronto-socorro e UTI"},
+{n:22,q:"Gosto de interagir com muitas pessoas diferentes ao longo do dia.",type:"scale",hint:"Relacionado a recepção e atendimento"},
+{n:23,q:"Lido bem com interrupções e múltiplas demandas simultâneas.",type:"scale",hint:"Relacionado a pronto-socorro e recepção de alto fluxo"},
+{n:24,q:"Prefiro ambientes de trabalho previsíveis e rotineiros a ambientes que mudam constantemente.",type:"scale",hint:"Relacionado a atividades administrativas"},
+{n:25,q:"Prefiro acompanhar poucos casos em profundidade a atender um grande volume de pessoas rapidamente.",type:"scale",hint:"Relacionado a internação e ambulatório"},
+{n:26,q:"Erros em protocolos ou rotinas me incomodam bastante, mesmo que pequenos.",type:"scale",hint:"Relacionado a setores com rotinas rígidas"}
 ]},
 {title:"Equidade e Acessibilidade",desc:"Este bloco é 100% voluntário. Você pode responder, pular perguntas ou avançar sem qualquer prejuízo.",voluntary:true,items:[
 {n:26,q:"Você gostaria de informar alguma necessidade de acessibilidade física, comunicacional ou tecnológica para o exercício da função?",type:"textarea",optional:true},
