@@ -1,0 +1,128 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#102c3a">
+<meta name="description" content="Instrumento demonstrativo de acolhimento e perfil profissiográfico — SES-TO, Edital nº 001/2026.">
+<title>Perfil Profissiográfico | SES-TO</title>
+<style>
+:root{--navy:#102c3a;--navy2:#173d4c;--teal:#087f83;--mint:#dff4ef;--ink:#18313a;--muted:#617780;--line:#dce7e8;--paper:#fff;--bg:#f2f6f6;--gold:#f1c66d;--shadow:0 18px 55px #173d4c12}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.55 Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif}
+header{background:linear-gradient(125deg,#102c3a,#174d58);color:white;padding:26px max(22px,calc((100vw - 1120px)/2)) 76px}
+.topline{display:flex;justify-content:space-between;align-items:center;gap:16px}.brand{font-size:12px;letter-spacing:.13em;text-transform:uppercase;color:#b8d9d8;font-weight:800}.tag{border:1px solid #ffffff40;border-radius:99px;padding:6px 12px;font-size:11px;color:#d7e9e8}
+h1{font-size:clamp(28px,4vw,42px);line-height:1.1;letter-spacing:-.04em;margin:30px 0 12px;max-width:720px}.intro{color:#d1e1e2;max-width:680px;margin:0}.hero-meta{display:flex;gap:24px;flex-wrap:wrap;margin-top:28px;color:#c4d9d9;font-size:13px}.hero-meta strong{color:white}
+main{max-width:1120px;margin:-48px auto 60px;padding:0 20px}.shell{display:grid;grid-template-columns:270px minmax(0,1fr);gap:20px;align-items:start}
+.sidebar,.panel{background:var(--paper);border:1px solid var(--line);border-radius:18px;box-shadow:var(--shadow)}.sidebar{padding:18px;position:sticky;top:18px}.side-title{font-size:11px;color:var(--muted);font-weight:800;letter-spacing:.12em;text-transform:uppercase;margin:3px 8px 12px}
+.tablist{display:grid;gap:5px}.tab{border:0;background:transparent;text-align:left;padding:11px 10px;border-radius:11px;color:#536b73;display:flex;gap:10px;align-items:center;cursor:pointer;font:inherit}.tab:hover{background:#f2f7f7}.tab[aria-selected=true]{background:var(--mint);color:#075f63;font-weight:750}.num{width:27px;height:27px;display:grid;place-items:center;border-radius:8px;background:#edf2f3;color:#60777c;font-size:11px;font-weight:800;flex:none}.tab[aria-selected=true] .num{background:#c2e8df;color:#075f63}.tab.done .num{background:#dcefe7;color:#176b4b}.side-note{margin:18px 7px 2px;padding-top:15px;border-top:1px solid var(--line);font-size:12px;color:var(--muted)}
+.panel{padding:clamp(22px,4vw,42px);min-height:610px}.panel-head{display:flex;justify-content:space-between;gap:16px;align-items:flex-start;margin-bottom:25px}.eyebrow{font-size:11px;text-transform:uppercase;letter-spacing:.12em;color:var(--teal);font-weight:850}.panel h2{font-size:27px;letter-spacing:-.03em;margin:5px 0 6px}.sub{color:var(--muted);margin:0;max-width:650px}.counter{font-size:12px;color:var(--muted);white-space:nowrap;background:#f3f7f7;padding:7px 10px;border-radius:99px}
+.notice{background:#eff8f6;border:1px solid #d3ebe4;border-radius:13px;padding:16px 18px;margin:18px 0;color:#315d5c}.notice strong{color:#155f5d}.notice.warning{background:#fff8e9;border-color:#f2e3bd;color:#705c32}
+.field{padding:19px 0;border-bottom:1px solid #edf1f1}.field:last-child{border:0}.qtitle{font-weight:700;margin:0 0 12px}.required{color:#b35b34;font-size:11px;margin-left:6px;font-weight:700}.hint{font-size:12px;color:var(--muted);margin:-6px 0 11px}
+.options{display:flex;gap:9px;flex-wrap:wrap}.choice{position:relative}.choice input{position:absolute;opacity:0;pointer-events:none}.choice label{display:block;border:1px solid var(--line);border-radius:10px;padding:9px 13px;cursor:pointer;color:#496168;background:white;font-size:13px;transition:.15s}.choice input:checked+label{border-color:var(--teal);background:#eaf7f4;color:#075f63;box-shadow:inset 0 0 0 1px var(--teal)}.choice input:focus-visible+label{outline:3px solid #80c8c0;outline-offset:2px}
+input[type=text],textarea,select{width:100%;border:1px solid #cfdddf;border-radius:10px;padding:12px 13px;font:inherit;color:var(--ink);background:#fff}textarea{min-height:92px;resize:vertical}input:focus,textarea:focus,select:focus{outline:3px solid #c5e9e3;border-color:var(--teal)}
+.likert{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:8px}.likert .choice label{text-align:center;padding:10px 4px}.likert .choice label small{display:block;font-size:10px;opacity:.8}
+.nav{display:flex;justify-content:space-between;gap:12px;margin-top:30px;padding-top:22px;border-top:1px solid var(--line)}button.action{border:0;border-radius:10px;padding:12px 18px;font:inherit;font-weight:750;cursor:pointer}.primary{background:var(--teal);color:white}.primary:hover{background:#06696d}.secondary{background:#eef3f3;color:#38545c}.secondary:hover{background:#e2ebeb}.action:disabled{opacity:.4;cursor:not-allowed}
+.progress{height:6px;background:#e8efef;border-radius:99px;overflow:hidden;margin:0 0 24px}.progress span{display:block;height:100%;background:linear-gradient(90deg,var(--teal),#62b9a8);width:0;transition:width .25s}
+.consent{display:flex;gap:10px;align-items:flex-start;margin-top:18px;font-size:13px;color:#496168}.consent input{margin-top:4px;accent-color:var(--teal)}
+footer{text-align:center;color:#829398;font-size:12px;padding:0 20px 34px}.hidden{display:none!important}
+@media(max-width:800px){.shell{grid-template-columns:1fr}.sidebar{position:static;padding:13px}.tablist{display:flex;overflow:auto;padding-bottom:3px}.tab{white-space:nowrap;padding:8px}.tab .label{display:none}.side-title,.side-note{display:none}.panel{min-height:0}.panel-head{display:block}.counter{display:inline-block;margin-top:12px}.likert{gap:5px}.likert .choice label{font-size:11px;padding:9px 2px}.likert small{display:none!important}}
+@media(max-width:420px){header{padding-top:20px}.tag{font-size:10px}.hero-meta{gap:12px}.panel{padding:20px 16px}.panel h2{font-size:23px}.options{display:grid;grid-template-columns:1fr}.choice label{width:100%}.likert{grid-template-columns:repeat(5,minmax(0,1fr))}}
+</style>
+</head>
+<body>
+<header><div class="topline"><div class="brand">Secretaria de Estado da Saúde · Tocantins</div><div class="tag">EDITAL Nº 001/2026</div></div>
+<h1>Perfil Profissiográfico</h1><p class="intro">Um instrumento de acolhimento para conhecer experiências, expectativas e necessidades de apoio de quem chega à rede estadual de saúde.</p>
+<div class="hero-meta"><span><strong>28 itens</strong> · 8 blocos</span><span><strong>Preenchimento estimado</strong> · 10–15 min</span><span><strong>Uso</strong> · Apoio ao acolhimento</span></div></header>
+<main><div class="shell">
+<aside class="sidebar"><div class="side-title">Etapas do formulário</div><nav class="tablist" role="tablist" aria-label="Etapas do formulário" id="tabs"></nav><div class="side-note">Você pode navegar entre as etapas. As respostas ficam apenas nesta demonstração e não são enviadas a nenhum servidor.</div></aside>
+<section class="panel" aria-live="polite"><div class="progress"><span id="progress"></span></div><div class="panel-head"><div><div class="eyebrow" id="eyebrow">BLOCO 0</div><h2 id="heading">Abertura e consentimento</h2><p class="sub" id="description"></p></div><div class="counter" id="counter">Etapa 1 de 8</div></div><div id="content"></div><div class="nav"><button class="action secondary" id="prev" type="button">← Voltar</button><button class="action primary" id="next" type="button">Continuar →</button></div></section>
+</div></main>
+<footer>Protótipo demonstrativo · SES-TO · Não utilize este ambiente para inserir dados pessoais reais.</footer>
+<script>
+const likert=["Discordo totalmente","Discordo parcialmente","Nem concordo nem discordo","Concordo parcialmente","Concordo totalmente"];
+const yesno=["Sim","Não"];
+const blocks=[
+{title:"Abertura e consentimento",desc:"Antes de começar, conheça a finalidade e os cuidados previstos para este instrumento.",items:[]},
+{title:"Competência Técnica",desc:"Experiências profissionais que ajudam a contextualizar a chegada à rede pública de saúde.",items:[
+{n:1,q:"Você já atuou na rede pública de saúde (SUS) antes?",type:"radio",o:yesno},
+{n:2,q:"Se sim, por quanto tempo?",type:"radio",o:["Menos de 1 ano","1 a 3 anos","3 a 5 anos","Mais de 5 anos"]},
+{n:3,q:"Você já trabalhou em urgência/emergência?",type:"radio",o:yesno},
+{n:4,q:"Você já trabalhou em atenção primária/ESF?",type:"radio",o:yesno},
+{n:5,q:"Em uma escala de 1 a 5, o quanto você se sente preparado tecnicamente para iniciar nesta função?",type:"scale",labels:["1","2","3","4","5"],hint:"1 = pouco preparado · 5 = muito preparado"}
+]},
+{title:"Vínculo Territorial",desc:"Relação prévia com o Tocantins, o interior e o município de lotação.",items:[
+{n:6,q:"Você nasceu ou já morou no Tocantins?",type:"radio",o:yesno},
+{n:7,q:"Você já morou ou trabalhou em município de pequeno porte do interior?",type:"radio",o:yesno},
+{n:8,q:"Você tem familiares ou pessoas próximas morando no município de lotação ou região?",type:"radio",o:["Sim","Não","Não sei dizer"]},
+{n:9,q:"Como você avalia seu conhecimento sobre o município para onde vai?",type:"radio",o:["Nenhum","Pouco","Médio","Bom","Já conheço bem"]}
+]},
+{title:"Mobilidade e Disponibilidade",desc:"Condições práticas que podem influenciar a mudança e o deslocamento.",items:[
+{n:10,q:"Você possui dependentes que vão se mudar com você?",type:"radio",o:["Sim","Não","Mudança parcial — ex.: só o cônjuge"]},
+{n:11,q:"Você pretende se mudar definitivamente para o município, ou pretende fazer deslocamento periódico (ex.: semanal)?",type:"radio",o:["Mudança definitiva","Deslocamento periódico","Ainda não decidi"]},
+{n:12,q:"Você tem alguma restrição de deslocamento que a SES-TO deveria conhecer?",type:"textarea",optional:true}
+]},
+{title:"Perfil Comportamental e Adaptação",desc:"Indique o quanto você concorda com cada afirmação. Não existem respostas certas ou erradas.",items:[
+{n:13,q:"Eu me adapto bem a ambientes com poucos recursos disponíveis.",type:"scale"},
+{n:14,q:"Eu prefiro ter autonomia para resolver problemas sozinho a seguir protocolos rígidos de equipe.",type:"scale"},
+{n:15,q:"Eu me sinto confortável trabalhando em equipes pequenas, onde preciso assumir várias funções.",type:"scale"},
+{n:16,q:"Mudanças bruscas de rotina me geram desconforto significativo.",type:"scale"}
+]},
+{title:"Motivadores e Expectativas de Carreira",desc:"O que motivou sua escolha e quais são suas expectativas de permanência.",items:[
+{n:17,q:"O que mais pesou na sua escolha deste cargo/concurso?",type:"radioOther",o:["Estabilidade","Remuneração","Vocação para a área","Proximidade com família","Outro"]},
+{n:18,q:"Por quanto tempo você pretende permanecer neste município?",type:"radio",o:["Menos de 1 ano","1 a 2 anos","3 a 5 anos","Pretendo ficar definitivamente","Ainda não sei"]},
+{n:19,q:"O que faria você considerar pedir remoção ou exonerar-se nos primeiros meses?",type:"textarea",optional:true}
+]},
+{title:"Afinidade funcional e estilo de Trabalho",desc:"Preferências de rotina e interação que podem subsidiar uma conversa sobre afinidade funcional.",items:[
+{n:20,q:"Eu me mantenho calmo(a) e funcional mesmo em situações de urgência ou alta pressão.",type:"scale",hint:"Relacionado a contextos como pronto-socorro e UTI"},
+{n:21,q:"Gosto de interagir com muitas pessoas diferentes ao longo do dia.",type:"scale",hint:"Relacionado a recepção e atendimento"},
+{n:22,q:"Lido bem com interrupções e múltiplas demandas simultâneas.",type:"scale",hint:"Relacionado a pronto-socorro e recepção de alto fluxo"},
+{n:23,q:"Prefiro ambientes de trabalho previsíveis e rotineiros a ambientes que mudam constantemente.",type:"scale",hint:"Relacionado a atividades administrativas"},
+{n:24,q:"Prefiro acompanhar poucos casos em profundidade a atender um grande volume de pessoas rapidamente.",type:"scale",hint:"Relacionado a internação e ambulatório"},
+{n:25,q:"Erros em protocolos ou rotinas me incomodam bastante, mesmo que pequenos.",type:"scale",hint:"Relacionado a setores com rotinas rígidas"}
+]},
+{title:"Equidade e Acessibilidade",desc:"Este bloco é 100% voluntário. Você pode responder, pular perguntas ou avançar sem qualquer prejuízo.",voluntary:true,items:[
+{n:26,q:"Você gostaria de informar alguma necessidade de acessibilidade física, comunicacional ou tecnológica para o exercício da função?",type:"textarea",optional:true},
+{n:27,q:"Você sente que precisará de apoio para se inserir em redes de convivência/apoio no município de destino?",type:"radio",o:["Sim","Não","Prefiro não responder"],optional:true},
+{n:28,q:"Há algo mais que você gostaria que a equipe de acolhimento soubesse para te apoiar melhor?",type:"textarea",optional:true}
+]}
+];
+const answers={};let current=0,consent=false;
+const tabs=document.getElementById("tabs"),content=document.getElementById("content");
+function esc(s){return String(s).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]))}
+function fieldHTML(item){
+const key="q"+item.n;let out='<div class="field"><p class="qtitle">'+item.n+'. '+esc(item.q)+(item.optional?'<span class="required">OPCIONAL</span>':'<span class="required">OBRIGATÓRIA</span>')+'</p>';
+if(item.hint)out+='<p class="hint">'+esc(item.hint)+'</p>';
+if(item.type==="textarea"){out+='<textarea id="'+key+'" data-key="'+key+'" placeholder="Escreva sua resposta (opcional)">'+esc(answers[key]||"")+'</textarea>'}
+else if(item.type==="scale"||item.type==="radio"){
+const opts=item.type==="scale"?likert:item.o;out+='<div class="'+(item.type==="scale"?'likert':'options')+'">';
+opts.forEach((o,i)=>{const val=item.type==="scale"?String(i+1):o;out+='<div class="choice"><input type="radio" id="'+key+'_'+i+'" name="'+key+'" value="'+esc(val)+'" '+(answers[key]===val?'checked':'')+'><label for="'+key+'_'+i+'">'+esc(item.type==="scale"?val:o)+(item.type==="scale"?'<small>'+["Discordo totalmente","Discordo","Neutro","Concordo","Concordo totalmente"][i]+'</small>':'')+'</label></div>'});
+out+='</div>'}
+else if(item.type==="radioOther"){
+out+='<div class="options">';item.o.forEach((o,i)=>{out+='<div class="choice"><input type="radio" id="'+key+'_'+i+'" name="'+key+'" value="'+esc(o)+'" '+(answers[key]===o?'checked':'')+'><label for="'+key+'_'+i+'">'+esc(o)+'</label></div>'});out+='</div><input style="margin-top:10px" type="text" id="'+key+'_other" placeholder="Se marcou Outro, descreva (opcional)" value="'+esc(answers[key+"_other"]||"")+'">'
+}
+return out+'</div>';
+}
+function render(){
+const b=blocks[current];document.getElementById("eyebrow").textContent="BLOCO "+current;document.getElementById("heading").textContent=b.title;document.getElementById("description").textContent=b.desc;document.getElementById("counter").textContent="Etapa "+(current+1)+" de 8";document.getElementById("progress").style.width=((current+1)/8*100)+"%";
+tabs.innerHTML=blocks.map((x,i)=>'<button type="button" role="tab" class="tab '+(i===current?'':'')+'" aria-selected="'+(i===current)+'" data-tab="'+i+'"><span class="num">'+(i===0?'i':String(i).padStart(2,"0"))+'</span><span class="label">'+esc(x.title)+'</span></button>').join("");
+let html="";
+if(current===0){
+html+='<div class="notice"><strong>Finalidade do instrumento</strong><br>Este questionário integra a proposta de acolhimento da SES-TO. Seu objetivo é conhecer experiências, expectativas e possíveis necessidades de apoio para subsidiar o acolhimento e a ambientação do servidor.</div>';
+html+='<div class="notice warning"><strong>Preenchimento voluntário e sigiloso</strong><br>As informações são tratadas como sensíveis, conforme os princípios da LGPD, e devem ser utilizadas exclusivamente para fins de apoio ao acolhimento — nunca para avaliação de desempenho, aprovação/reprovação ou decisões de permanência.</div>';
+html+='<p class="qtitle">Identificação funcional</p><div class="field"><label for="cargo">Cargo / especialidade</label><input id="cargo" type="text" placeholder="Campo previsto para preenchimento automático pelo cadastro" disabled></div><div class="field"><label for="municipio">Município de lotação</label><input id="municipio" type="text" placeholder="Campo previsto para preenchimento automático pelo cadastro" disabled></div>';
+html+='<label class="consent"><input type="checkbox" id="consent" '+(consent?'checked':'')+'><span>Declaro que li as informações acima e, voluntariamente, aceito responder ao instrumento para fins exclusivos de acolhimento. <strong>É possível não responder aos itens opcionais.</strong></span></label>';
+}else{
+if(b.voluntary)html+='<div class="notice"><strong>Bloco inteiramente voluntário.</strong> As respostas abaixo são opcionais. Você pode avançar sem preencher nenhuma delas.</div>';
+html+=b.items.map(fieldHTML).join("");
+}
+content.innerHTML=html;
+document.getElementById("prev").disabled=current===0;
+document.getElementById("next").textContent=current===7?"Concluir demonstração":"Continuar →";
+document.getElementById("next").disabled=current===0&&!consent;
+tabs.querySelectorAll("[data-tab]").forEach(btn=>btn.addEventListener("click",()=>{if(current===0&&!consent){alert("Para iniciar, confirme a leitura e o consentimento voluntário.");return}current=Number(btn.dataset.tab);render()}));
+const c=document.getElementById("consent");if(c)c.addEventListener("change",e=>{consent=e.target.checked;document.getElementById("next").disabled=!consent});
+content.querySelectorAll("input,textarea").forEach(el=>{if(el.id==="consent")return;const save=()=>{if(el.type==="radio"){if(el.checked)answers[el.name]=el.value}else answers[el.dataset.key||el.id]=el.value};el.addEventListener(el.type==="radio"?"change":"input",save)});
+}
+document.getElementById("prev").addEventListener("click",()=>{if(current>0){current--;render()}});
+document.getElementById("next").addEventListener("click",()=>{if(current===0&&!consent)return;if(current<7){current++;render()}else{content.innerHTML='<div class="notice"><strong>Demonstração concluída.</strong><br>Você percorreu os oito blocos do instrumento. Nenhuma resposta foi enviada ou armazenada.</div><h3>Próximos passos antes da aplicação oficial</h3><ul><li>Definir o responsável pelo tratamento e as regras de acesso aos dados.</li><li>Implementar armazenamento protegido, autenticação, controle de acesso e política de retenção.</li><li>Validar o texto de consentimento e o fluxo com a área responsável pela LGPD.</li><li>Definir como será a conversa de acolhimento e a validação do perfil com o próprio servidor.</li></ul><button class="action secondary" type="button" id="restart">↻ Reiniciar demonstração</button>';document.getElementById("restart").onclick=()=>{current=0;consent=false;Object.keys(answers).forEach(k=>delete answers[k]);render()};document.getElementById("prev").disabled=false;document.getElementById("next").classList.add("hidden")}});
+render();
+</script></body></html>
