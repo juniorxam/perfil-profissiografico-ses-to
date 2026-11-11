@@ -150,8 +150,8 @@ const blocks=[
 {n:2,q:"Se sim, por quanto tempo?",type:"radio",o:["Menos de 1 ano","1 a 3 anos","3 a 5 anos","Mais de 5 anos"]},
 {n:3,q:"Você já trabalhou em urgência/emergência?",type:"radio",o:yesno},
 {n:4,q:"Você já trabalhou em atenção primária/ESF?",type:"radio",o:yesno},
-{n:5,q:"Em uma escala de 1 a 5, o quanto você se sente preparado tecnicamente para iniciar nesta função?",type:"scale",labels:["1","2","3","4","5"],hint:"1 = pouco preparado · 5 = muito preparado"},
-{n:6,q:"Você possui experiência profissional em atividades de gestão (coordenação de equipes, gestão de serviços, processos, contratos ou unidades de saúde)?",type:"radio",o:["Sim","Não"]}
+{n:5,q:"Você possui experiência profissional em atividades de gestão (coordenação de equipes, gestão de serviços, processos, contratos ou unidades de saúde)?",type:"radio",o:["Sim","Não"]},
+{n:6,q:"Em uma escala de 1 a 5, o quanto você se sente preparado tecnicamente para iniciar nesta função?",type:"scale",labels:["1","2","3","4","5"],hint:"1 = pouco preparado · 5 = muito preparado"}
 ]},
 {title:"Vínculo Territorial",desc:"Relação prévia com o Tocantins, o interior e o município de lotação.",items:[
 {n:7,q:"Você nasceu ou já morou no Tocantins?",type:"radio",o:yesno},
@@ -207,13 +207,22 @@ return out+'</div>';
 }
 
 const cargosNivelMedio=["Assistente de Serviços de Saúde","Instrumentador Cirúrgico","Técnico em Enfermagem","Técnico em Imobilização Ortopédica","Técnico em Laboratório","Técnico em Radiologia","Técnico em Saúde Bucal"];
+const cargosComPosObrigatoria=["Administrador Hospitalar","Auditor em Saúde","Engenheiro Clínico","Executivo em Saúde","Físico","Gestor em Saúde","Enfermeiro Obstetra","Perfusionista","Tecnólogo"];
+function educationType(cargo){
+ if(!cargo)return null;
+ if(cargosNivelMedio.includes(cargo))return "graduacao";
+ if(cargo.startsWith("Médico RQE"))return null;
+ if(cargosComPosObrigatoria.includes(cargo)&&cargo!=="Pesquisador Docente em Saúde Pública")return null;
+ return "posgraduacao";
+}
 function educationFieldsHTML(cargo){
- if(!cargo)return "";
- const medio=cargosNivelMedio.includes(cargo);
- const key=medio?"graduacao":"posgraduacao", qual=medio?"graduacaoQual":"posgraduacaoQual";
- const title=medio?"Você possui graduação?":"Você possui pós-graduação?";
+ const type=educationType(cargo);
+ if(!type)return "";
+ const medio=type==="graduacao";
+ const key=medio?"graduacao":"posgraduacao",qual=medio?"graduacaoQual":"posgraduacaoQual";
+ const title=medio?"Você possui graduação além da formação exigida para o cargo?":"Você possui pós-graduação além dos requisitos de ingresso?";
  const label=medio?"Qual curso de graduação?":"Qual curso ou área de pós-graduação?";
- const hint=medio?"Exibido para cargos de nível médio/técnico.":"Exibido para cargos de nível superior.";
+ const hint=medio?"Pergunta complementar para cargos cujo requisito de ingresso é ensino médio/técnico.":"Pergunta complementar para cargos de nível superior que não exigem pós-graduação como requisito. Para Pesquisador Docente em Saúde Pública, esta pergunta será apresentada.";
  return '<div class="field"><p class="qtitle">'+title+'</p><div class="options">'+["Sim","Não"].map((v,i)=>'<div class="choice"><input type="radio" id="'+key+'_'+i+'" name="'+key+'" value="'+v+'" '+(answers[key]===v?'checked':'')+'><label for="'+key+'_'+i+'">'+v+'</label></div>').join("")+'</div><div id="'+qual+'Wrap" class="'+(answers[key]==="Sim"?"":"hidden")+'"><label for="'+qual+'">'+label+'</label><input id="'+qual+'" type="text" data-key="'+qual+'" placeholder="'+(medio?"Informe o curso de graduação":"Ex.: especialização, residência, mestrado ou doutorado")+'" value="'+esc(answers[qual]||"")+'"></div><p class="education-help">'+hint+'</p></div>';
 }
 function render(){
@@ -234,7 +243,7 @@ html+=b.items.map(fieldHTML).join("");
 }
 content.innerHTML=html;
 const cargoSelect=document.getElementById("cargo"), municipioSelect=document.getElementById("municipio");
-if(cargoSelect){cargoSelect.value=answers.cargo||"";cargoSelect.addEventListener("change",()=>{answers.cargo=cargoSelect.value;renderEducationFields();});}
+if(cargoSelect){cargoSelect.value=answers.cargo||"";cargoSelect.addEventListener("change",()=>{answers.cargo=cargoSelect.value;["graduacao","graduacaoQual","posgraduacao","posgraduacaoQual"].forEach(k=>delete answers[k]);renderEducationFields();});}
 if(municipioSelect){municipioSelect.value=answers.municipio||"";municipioSelect.addEventListener("change",()=>{answers.municipio=municipioSelect.value;});}
 function renderEducationFields(){
  const holder=document.getElementById("educationFields");if(!holder)return;
