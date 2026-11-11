@@ -24,6 +24,54 @@ input[type=text],textarea,select{width:100%;border:1px solid #cfdddf;border-radi
 .progress{height:6px;background:#e8efef;border-radius:99px;overflow:hidden;margin:0 0 24px}.progress span{display:block;height:100%;background:linear-gradient(90deg,var(--teal),#62b9a8);width:0;transition:width .25s}
 .consent{display:flex;gap:10px;align-items:flex-start;margin-top:18px;font-size:13px;color:#496168}.consent input{margin-top:4px;accent-color:var(--teal)}
 footer{text-align:center;color:#829398;font-size:12px;padding:0 20px 34px}.hidden{display:none!important}
+
+/* Ajustes de apresentação para monitores e notebooks */
+@media(min-width:801px){
+  body{font-size:16px}
+  header{padding-left:max(40px,calc((100vw - 1360px)/2));padding-right:max(40px,calc((100vw - 1360px)/2));padding-top:34px;padding-bottom:92px}
+  .topline,.hero-meta,h1,.intro{max-width:1360px}
+  h1{font-size:50px;margin-top:38px;max-width:850px}
+  .intro{font-size:17px;max-width:760px;line-height:1.7}
+  .hero-meta{gap:38px;margin-top:32px;font-size:14px}
+  main{max-width:1440px;padding:0 36px;margin-top:-58px}
+  .shell{grid-template-columns:310px minmax(0,1fr);gap:28px}
+  .sidebar{padding:24px;top:24px;border-radius:20px}
+  .side-title{font-size:12px;margin:4px 10px 16px}
+  .tablist{gap:7px}
+  .tab{padding:14px 12px;gap:12px;font-size:14px;line-height:1.35}
+  .num{width:32px;height:32px;border-radius:9px;font-size:12px}
+  .side-note{font-size:13px;line-height:1.65;margin-top:22px;padding-top:18px}
+  .panel{padding:48px 54px;min-height:700px;border-radius:20px}
+  .panel-head{margin-bottom:34px;align-items:center}
+  .eyebrow{font-size:12px}
+  .panel h2{font-size:34px;margin:8px 0}
+  .sub{font-size:16px;max-width:760px;line-height:1.65}
+  .counter{font-size:13px;padding:9px 13px}
+  .progress{height:7px;margin-bottom:30px}
+  .notice{padding:20px 23px;margin:22px 0;font-size:15px;line-height:1.7;border-radius:15px}
+  .field{padding:24px 0}
+  .qtitle{font-size:16px;line-height:1.55;margin-bottom:15px}
+  .required{font-size:11px}
+  .hint{font-size:13px;margin:-8px 0 13px}
+  .options{gap:11px}
+  .choice label{font-size:14px;padding:11px 16px;min-height:44px;display:flex;align-items:center}
+  .likert{gap:10px;max-width:900px}
+  .likert .choice label{min-height:68px;display:flex;flex-direction:column;justify-content:center;gap:4px;padding:10px 7px;font-size:15px}
+  .likert .choice label small{font-size:11px;line-height:1.25}
+  input[type=text],textarea,select{max-width:900px;font-size:15px;padding:14px 16px}
+  textarea{min-height:116px}
+  .consent{font-size:14px;line-height:1.7;max-width:900px}
+  .nav{margin-top:38px;padding-top:26px}
+  button.action{padding:14px 23px;font-size:15px;min-width:125px}
+  footer{font-size:13px;padding-bottom:40px}
+}
+@media(min-width:801px) and (max-width:1100px){
+  main{padding:0 22px}
+  .shell{grid-template-columns:265px minmax(0,1fr);gap:18px}
+  .panel{padding:34px 30px}
+  .tab{font-size:13px}
+}
+
 @media(max-width:800px){.shell{grid-template-columns:1fr}.sidebar{position:static;padding:13px}.tablist{display:flex;overflow:auto;padding-bottom:3px}.tab{white-space:nowrap;padding:8px}.tab .label{display:none}.side-title,.side-note{display:none}.panel{min-height:0}.panel-head{display:block}.counter{display:inline-block;margin-top:12px}.likert{gap:5px}.likert .choice label{font-size:11px;padding:9px 2px}.likert small{display:none!important}}
 @media(max-width:420px){header{padding-top:20px}.tag{font-size:10px}.hero-meta{gap:12px}.panel{padding:20px 16px}.panel h2{font-size:23px}.options{display:grid;grid-template-columns:1fr}.choice label{width:100%}.likert{grid-template-columns:repeat(5,minmax(0,1fr))}}
 </style>
