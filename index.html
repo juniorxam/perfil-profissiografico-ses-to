@@ -74,6 +74,10 @@ footer{text-align:center;color:#829398;font-size:12px;padding:0 20px 34px}.hidde
 
 @media(max-width:800px){.shell{grid-template-columns:1fr}.sidebar{position:static;padding:13px}.tablist{display:flex;overflow:auto;padding-bottom:3px}.tab{white-space:nowrap;padding:8px}.tab .label{display:none}.side-title,.side-note{display:none}.panel{min-height:0}.panel-head{display:block}.counter{display:inline-block;margin-top:12px}.likert{gap:5px}.likert .choice label{font-size:11px;padding:9px 2px}.likert small{display:none!important}}
 @media(max-width:420px){header{padding-top:20px}.tag{font-size:10px}.hero-meta{gap:12px}.panel{padding:20px 16px}.panel h2{font-size:23px}.options{display:grid;grid-template-columns:1fr}.choice label{width:100%}.likert{grid-template-columns:repeat(5,minmax(0,1fr))}}
+
+.pdf-actions{display:flex;align-items:center;gap:14px;flex-wrap:wrap;margin-top:16px}.pdf-actions span{font-size:12px;color:var(--muted)}
+@media(min-width:801px){.pdf-actions{margin-top:20px}.pdf-actions span{font-size:13px}}
+@media(max-width:520px){.pdf-actions{display:grid}.pdf-actions button{width:100%}}
 </style>
 </head>
 <body>
@@ -82,7 +86,8 @@ footer{text-align:center;color:#829398;font-size:12px;padding:0 20px 34px}.hidde
 <div class="hero-meta"><span><strong>28 itens</strong> · 8 blocos</span><span><strong>Preenchimento estimado</strong> · 10–15 min</span><span><strong>Uso</strong> · Apoio ao acolhimento</span></div></header>
 <main><div class="shell">
 <aside class="sidebar"><div class="side-title">Etapas do formulário</div><nav class="tablist" role="tablist" aria-label="Etapas do formulário" id="tabs"></nav><div class="side-note">Você pode navegar entre as etapas. As respostas ficam apenas nesta demonstração e não são enviadas a nenhum servidor.</div></aside>
-<section class="panel" aria-live="polite"><div class="progress"><span id="progress"></span></div><div class="panel-head"><div><div class="eyebrow" id="eyebrow">BLOCO 0</div><h2 id="heading">Abertura e consentimento</h2><p class="sub" id="description"></p></div><div class="counter" id="counter">Etapa 1 de 8</div></div><div id="content"></div><div class="nav"><button class="action secondary" id="prev" type="button">← Voltar</button><button class="action primary" id="next" type="button">Continuar →</button></div></section>
+<section class="panel" aria-live="polite"><div class="progress"><span id="progress"></span></div><div class="panel-head"><div><div class="eyebrow" id="eyebrow">BLOCO 0</div><h2 id="heading">Abertura e consentimento</h2><p class="sub" id="description"></p></div><div class="counter" id="counter">Etapa 1 de 8</div></div><div id="content"></div><div class="nav"><button class="action secondary" id="prev" type="button">← Voltar</button><button class="action primary" id="next" type="button">Continuar →</button></div>
+<div class="pdf-actions"><button class="action secondary" id="generatePdf" type="button">▤ Gerar formulário completo em PDF</button><span>Inclui todas as etapas e respostas; itens sem resposta serão identificados.</span></div></section>
 </div></main>
 <footer>Protótipo demonstrativo · SES-TO · Não utilize este ambiente para inserir dados pessoais reais.</footer>
 <script>
@@ -170,9 +175,35 @@ document.getElementById("next").textContent=current===7?"Concluir demonstração
 document.getElementById("next").disabled=current===0&&!consent;
 tabs.querySelectorAll("[data-tab]").forEach(btn=>btn.addEventListener("click",()=>{if(current===0&&!consent){alert("Para iniciar, confirme a leitura e o consentimento voluntário.");return}current=Number(btn.dataset.tab);render()}));
 const c=document.getElementById("consent");if(c)c.addEventListener("change",e=>{consent=e.target.checked;document.getElementById("next").disabled=!consent});
-content.querySelectorAll("input,textarea,select").forEach(el=>{if(el.id==="consent")return;const save=()=>{if(el.type==="radio"){if(el.checked)answers[el.name]=el.value}else answers[el.dataset.key||el.id]=el.value};el.addEventListener(el.type==="radio"?"change":"input",save)});
+content.querySelectorAll("input,textarea,select").forEach(el=>{if(el.id==="consent")return;const save=()=>{if(el.type==="radio"){if(el.checked)answers[el.name]=el.value}else answers[el.dataset.key||el.id]=el.value};el.addEventListener(el.type==="radio"||el.tagName==="SELECT"?"change":"input",save)});
 }
+
+function generateCompletedPDF(){
+ const popup=window.open("","_blank");
+ if(!popup){alert("O navegador bloqueou a janela do PDF. Permita pop-ups para este site e tente novamente.");return}
+ const escPdf=s=>String(s??"").replace(/[&<>"']/g,ch=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[ch]));
+ const getAnswer=(item)=>{
+  const v=answers["q"+item.n];
+  if(v===undefined||v===null||v==="")return "Não informado";
+  if(item.type==="scale")return v+" — "+(likert[Number(v)-1]||"");
+  if(item.type==="radioOther"&&v==="Outro"&&answers["q"+item.n+"_other"])return v+": "+answers["q"+item.n+"_other"];
+  return v;
+ };
+ const sections=blocks.map((b,i)=>{
+  const rows=b.items.map(item=>'<div class="question"><div class="question-title">'+item.n+'. '+escPdf(item.q)+'</div><div class="answer">'+escPdf(getAnswer(item))+'</div></div>').join("");
+  return '<section><h2>Bloco '+i+' — '+escPdf(b.title)+'</h2><p class="desc">'+escPdf(b.desc)+'</p>'+ (i===0?'<div class="question"><div class="question-title">Cargo / especialidade de ingresso</div><div class="answer">'+escPdf(answers.cargo||"Não informado")+'</div></div><div class="question"><div class="question-title">Localidade de lotação</div><div class="answer">'+escPdf(answers.municipio||"Não informado")+'</div></div><div class="question"><div class="question-title">Consentimento</div><div class="answer">'+(consent?"Confirmado":"Não confirmado")+'</div></div>':"")+rows+'</section>';
+ }).join("");
+ const doc='<!doctype html><html lang="pt-BR"><head><meta charset="utf-8"><title>Formulário Perfil Profissiográfico — SES-TO</title><style>'+
+ '@page{size:A4;margin:18mm 16mm}*{box-sizing:border-box}body{font:11pt/1.5 Arial,sans-serif;color:#18313a;margin:0}header{border-bottom:3px solid #087f83;padding-bottom:16px;margin-bottom:22px}header .org{font-size:9pt;letter-spacing:1px;text-transform:uppercase;color:#087f83;font-weight:bold}h1{font-size:23pt;line-height:1.2;margin:12px 0 5px;color:#102c3a}header p{margin:0;color:#526970}.meta{font-size:9pt;color:#60747a;margin-top:12px}section{break-inside:auto;margin:22px 0}h2{font-size:15pt;color:#075f63;border-bottom:1px solid #cbdedd;padding-bottom:7px;margin:0 0 5px}.desc{font-size:9.5pt;color:#60747a;margin:5px 0 12px}.question{break-inside:avoid;padding:9px 0;border-bottom:1px solid #e5eded}.question-title{font-weight:bold}.answer{margin-top:4px;background:#f2f7f6;border-left:3px solid #78b9ad;padding:7px 10px;white-space:pre-wrap;min-height:28px}.notice{background:#fff8e9;border:1px solid #f0dfb9;padding:10px 12px;border-radius:5px;font-size:9pt;margin:14px 0}.foot{font-size:8.5pt;color:#687c80;border-top:1px solid #dce7e8;padding-top:10px;margin-top:26px}@media print{body{-webkit-print-color-adjust:exact;print-color-adjust:exact}}</style></head><body>'+
+ '<header><div class="org">Secretaria de Estado da Saúde · Tocantins</div><h1>Perfil Profissiográfico</h1><p>Instrumento de acolhimento — Edital nº 001/2026</p><div class="meta">Documento gerado em '+escPdf(new Date().toLocaleString("pt-BR"))+'</div></header>'+
+ '<div class="notice"><strong>Confidencialidade:</strong> documento demonstrativo gerado localmente no navegador. As respostas não são enviadas a servidor. Trate este arquivo com cuidado, pois pode conter informações pessoais.</div>'+
+ sections+'<div class="foot">SES-TO · Protótipo demonstrativo. Uso exclusivo para apoio ao acolhimento, conforme as orientações do instrumento. Itens sem resposta aparecem como “Não informado”.</div>'+
+ '<script>window.onload=function(){window.focus();window.print()}<\/script></body></html>';
+ popup.document.open();popup.document.write(doc);popup.document.close();
+}
+
 document.getElementById("prev").addEventListener("click",()=>{if(current>0){current--;render()}});
 document.getElementById("next").addEventListener("click",()=>{if(current===0&&!consent)return;if(current<7){current++;render()}else{content.innerHTML='<div class="notice"><strong>Demonstração concluída.</strong><br>Você percorreu os oito blocos do instrumento. Nenhuma resposta foi enviada ou armazenada.</div><h3>Próximos passos antes da aplicação oficial</h3><ul><li>Definir o responsável pelo tratamento e as regras de acesso aos dados.</li><li>Implementar armazenamento protegido, autenticação, controle de acesso e política de retenção.</li><li>Validar o texto de consentimento e o fluxo com a área responsável pela LGPD.</li><li>Definir como será a conversa de acolhimento e a validação do perfil com o próprio servidor.</li></ul><button class="action secondary" type="button" id="restart">↻ Reiniciar demonstração</button>';document.getElementById("restart").onclick=()=>{current=0;consent=false;Object.keys(answers).forEach(k=>delete answers[k]);render()};document.getElementById("prev").disabled=false;document.getElementById("next").classList.add("hidden")}});
+document.getElementById("generatePdf").addEventListener("click",generateCompletedPDF);
 render();
 </script></body></html>
