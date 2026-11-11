@@ -78,6 +78,47 @@ footer{text-align:center;color:#829398;font-size:12px;padding:0 20px 34px}.hidde
 .pdf-actions{display:flex;align-items:center;gap:14px;flex-wrap:wrap;margin-top:16px}.pdf-actions span{font-size:12px;color:var(--muted)}
 @media(min-width:801px){.pdf-actions{margin-top:20px}.pdf-actions span{font-size:13px}}
 @media(max-width:520px){.pdf-actions{display:grid}.pdf-actions button{width:100%}}
+
+/* Correção de quebra de texto e prevenção de sobreposição */
+html{overflow-x:hidden}
+body{overflow-wrap:break-word;word-wrap:break-word}
+header,main,.shell,.sidebar,.panel,.panel-head,.field,.notice{min-width:0}
+.brand,.tag,.intro,.hero-meta,.side-note,.tab .label,.panel h2,.sub,.qtitle,.hint,.notice,.field label,.consent span,.pdf-actions span{overflow-wrap:anywhere;word-break:normal}
+.panel-head{align-items:flex-start}
+.panel-head>div:first-child{flex:1 1 auto;min-width:0}
+.panel h2{max-width:100%;line-height:1.22;letter-spacing:-.025em}
+.sub{max-width:100%;line-height:1.65}
+.counter{flex:0 0 auto;white-space:normal;text-align:center;max-width:150px;line-height:1.35}
+.tab{min-width:0}
+.tab .label{min-width:0;white-space:normal;line-height:1.4}
+.field{min-width:0}
+.qtitle{line-height:1.55}
+.notice{line-height:1.7}
+.choice{min-width:0;max-width:100%}
+.choice label{white-space:normal;overflow-wrap:anywhere;line-height:1.4}
+input[type=text],textarea,select{min-width:0;max-width:100%}
+.nav{align-items:center;flex-wrap:wrap}
+.nav button{white-space:normal;line-height:1.35}
+@media(min-width:801px){
+ .panel-head{gap:22px}
+ .panel-head>div:first-child{max-width:calc(100% - 170px)}
+ .counter{max-width:145px}
+ .tab{align-items:flex-start}
+ .tab .label{padding-top:5px}
+ .options{align-items:stretch}
+ .choice label{height:100%}
+}
+@media(max-width:800px){
+ .panel-head>div:first-child{max-width:100%}
+ .counter{max-width:none}
+ .tab{flex:0 0 auto}
+}
+@media(max-width:520px){
+ .nav{display:grid;grid-template-columns:1fr 1fr}
+ .nav button{min-width:0;width:100%}
+ .panel h2{font-size:clamp(21px,6vw,25px)}
+ .counter{white-space:normal}
+}
 </style>
 </head>
 <body>
